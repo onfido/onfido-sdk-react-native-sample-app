@@ -9,7 +9,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  NativeModules
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -18,6 +19,8 @@ const instructions = Platform.select({
   android: 'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
+
+NativeModules.OnfidoSDK.startSDK()
 
 export default class App extends Component<{}> {
   render() {
