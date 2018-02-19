@@ -10,9 +10,12 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.onfido.android.sdk.capture.Onfido;
+import com.onfido.android.sdk.capture.ExitCode;
 import com.onfido.android.sdk.capture.OnfidoConfig;
 import com.onfido.android.sdk.capture.OnfidoFactory;
 import com.onfido.api.client.data.Applicant;
+import com.onfido.android.sdk.capture.upload.Captures;
+import android.widget.Toast;
 
 import java.util.GregorianCalendar;
 
@@ -25,8 +28,19 @@ public class OnfidoSDK extends ReactContextBaseJavaModule {
     private Promise mOnfidoPromise;
     private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
         @Override
-        public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {
+        public void onActivityResult(final Activity activity, int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            client.handleActivityResult(resultCode, data, new Onfido.OnfidoResultListener() {
+                @Override
+                public void userCompleted(Applicant applicant, Captures captures) {
+                    Toast.makeText(activity, "Flow completed!", Toast.LENGTH_SHORT).show();
+                }
 
+                @Override
+                public void userExited(ExitCode exitCode, Applicant applicant) {
+                    Toast.makeText(activity, "Flow cancelled!", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     };
 
