@@ -20,7 +20,10 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-NativeModules.OnfidoSDK.startSDK()
+NativeModules.OnfidoSDK.startSDK(
+  (applicantId) => { /** on flow success action with applicantId **/  },
+  (errorCause) => { /** on flow error action with error cause **/}
+);
 
 export default class App extends Component<{}> {
   render() {
