@@ -10,31 +10,45 @@ import {
   StyleSheet,
   Text,
   View,
-  NativeModules
+  NativeModules,
+  Button
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-NativeModules.OnfidoSDK.startSDK()
-
 export default class App extends Component<{}> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: "Welcome to Onfido Android SDK!",
+      subtitle: "To get started, press \"Launch\""
+    }
+  }
+
+  setTextContent(titleContent, subtitleContent) {
+    this.setState({
+      title: titleContent,
+      subtitle: subtitleContent
+    })
+  }
+
+  launchSDK() {
+    NativeModules.OnfidoSDK.startSDK(
+      (applicantId) => { this.setTextContent("Verification complete", "To perform another verification, press \"Launch\"") },
+      (errorCause) => { this.setTextContent("Flow not finished", "To try again, press \"Launch\"") }
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          {this.state.title}
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit App.js
+          {this.state.subtitle}
         </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <Button onPress={() => this.launchSDK()}
+                title="Launch"
+                color="#159375"/>
       </View>
     );
   }
@@ -55,6 +69,6 @@ const styles = StyleSheet.create({
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
+    marginBottom: 10,
   },
 });

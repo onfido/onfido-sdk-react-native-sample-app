@@ -9,10 +9,14 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.Callback;
 import com.onfido.android.sdk.capture.Onfido;
+import com.onfido.android.sdk.capture.ExitCode;
 import com.onfido.android.sdk.capture.OnfidoConfig;
 import com.onfido.android.sdk.capture.OnfidoFactory;
 import com.onfido.api.client.data.Applicant;
+import com.onfido.android.sdk.capture.upload.Captures;
+import android.widget.Toast;
 
 import java.util.GregorianCalendar;
 
@@ -21,12 +25,24 @@ public class OnfidoSDK extends ReactContextBaseJavaModule {
     private static final String E_ACTIVITY_DOES_NOT_EXIST = "E_ACTIVITY_DOES_NOT_EXIST";
     private static final String E_FAILED_TO_SHOW_ONFIDO = "E_FAILED_TO_SHOW_ONFIDO";
     private final Onfido client;
+    private Callback mSuccessCallback;
+    private Callback mErrorCallback;
 
-    private Promise mOnfidoPromise;
     private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
         @Override
-        public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {
+        public void onActivityResult(final Activity activity, int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            client.handleActivityResult(resultCode, data, new Onfido.OnfidoResultListener() {
+                @Override
+                public void userCompleted(Applicant applicant, Captures captures) {
+                    mSuccessCallback.invoke(applicant.getId());
+                }
 
+                @Override
+                public void userExited(ExitCode exitCode, Applicant applicant) {
+                    mErrorCallback.invoke(exitCode.toString());
+                }
+            });
         }
     };
 
@@ -42,16 +58,15 @@ public class OnfidoSDK extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startSDK(final Promise promise) {
+    public void startSDK(Callback successCallback, Callback errorCallback) {
         Activity currentActivity = getCurrentActivity();
+        mSuccessCallback = successCallback;
+        mErrorCallback = errorCallback;
 
         if (currentActivity == null) {
-            promise.reject(E_ACTIVITY_DOES_NOT_EXIST, "Activity doesn't exist");
+            mErrorCallback.invoke(E_ACTIVITY_DOES_NOT_EXIST);
             return;
         }
-
-        // Store the promise to resolve/reject when picker returns data
-        mOnfidoPromise = promise;
 
         try {
             Applicant applicant = Applicant.builder()
@@ -61,13 +76,13 @@ public class OnfidoSDK extends ReactContextBaseJavaModule {
                     .build();
             OnfidoConfig onfidoConfig = OnfidoConfig.builder()
                     .withApplicant(applicant)
-                    .withToken("YOUR TOKEN")
+                    .withToken("YOUR_TOKEN")
                     .build();
             client.startActivityForResult(currentActivity, 1, onfidoConfig);
         }
         catch (Exception e) {
-            mOnfidoPromise.reject(E_FAILED_TO_SHOW_ONFIDO, e);
-            mOnfidoPromise = null;
+            mErrorCallback.invoke(E_FAILED_TO_SHOW_ONFIDO);
+            mErrorCallback = null;
         }
     }
 }
