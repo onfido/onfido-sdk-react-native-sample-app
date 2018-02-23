@@ -7,5 +7,4 @@ React Native Sample app using the onfido mobile SDKS.
 2. `react-native run-android`
 
 # TODO
-1. Add sample code for iOS
-2. Complete the bridge code for the android sdk callback
+- Add sample code for iOS
