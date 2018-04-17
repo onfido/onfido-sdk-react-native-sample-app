@@ -1,0 +1,60 @@
+PODS:
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
+    - AFNetworking/NSURLSession
+  - Alamofire (4.4.0)
+  - MBProgressHUD (1.0.0)
+  - Onfido (7.0.0):
+    - Alamofire (< 4.5)
+    - MBProgressHUD (~> 1.0.0)
+    - SwiftyJSON (~> 3.1)
+    - Swinject (< 2.3)
+    - ZSWTaggedString (= 4.0)
+    - ZSWTappableLabel (= 2.0)
+  - SwiftyJSON (3.1.4)
+  - Swinject (2.2.0)
+  - ZSWTaggedString (4.0):
+    - ZSWTaggedString/Core (= 4.0)
+  - ZSWTaggedString/Core (4.0)
+  - ZSWTappableLabel (2.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - Onfido
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - Alamofire
+    - MBProgressHUD
+    - Onfido
+    - SwiftyJSON
+    - Swinject
+    - ZSWTaggedString
+    - ZSWTappableLabel
+
+SPEC CHECKSUMS:
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  Onfido: 5341a373de3ebfa4869824f749f24e3ebd4384e9
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Swinject: 4ca48bca7de5f398229a26abe1ac902b9f3ee541
+  ZSWTaggedString: 3b06dc0fc32138bd15688a84167b0867c7353f3c
+  ZSWTappableLabel: cff84c0a55e30f2141f7dac24e5903302a7e35ec
+
+PODFILE CHECKSUM: 8407c1ae4f678836ddfe133e8e46434f130c1d72
+
+COCOAPODS: 1.5.0
