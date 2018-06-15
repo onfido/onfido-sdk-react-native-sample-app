@@ -18,7 +18,7 @@ export default class App extends Component<{}> {
   constructor(props) {
     super(props)
     this.state = {
-      title: "Welcome to Onfido Android SDK!",
+      title: "Welcome to Onfido SDK!",
       subtitle: "To get started, press \"Launch\""
     }
   }
@@ -31,10 +31,14 @@ export default class App extends Component<{}> {
   }
 
   launchSDK() {
-    NativeModules.OnfidoSDK.startSDK(
-      (applicantId) => { this.setTextContent("Verification complete", "To perform another verification, press \"Launch\"") },
-      (errorCause) => { this.setTextContent("Flow not finished", "To try again, press \"Launch\"") }
-    );
+    if (Platform.OS == 'android') {
+      NativeModules.OnfidoSDK.startSDK(
+        (applicantId) => { this.setTextContent("Verification complete", "To perform another verification, press \"Launch\"") },
+        (errorCause) => { this.setTextContent("Flow not finished", "To try again, press \"Launch\"") }
+      );
+    } else {
+      NativeModules.OnfidoSDK.startSDK('applicationID');
+    }
   }
 
   render() {
