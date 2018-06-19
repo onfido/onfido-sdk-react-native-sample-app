@@ -11,13 +11,17 @@ import Onfido
 
 @objc(OnfidoSDK)
 class OnfidoSDK: NSObject {
-  @objc func startSDK(_ applicantID: String) -> Void {
+  @objc func startSDK(_ applicantID: String,
+                      resolver resolve: @escaping RCTResponseSenderBlock,
+                      rejecter reject: @escaping RCTResponseSenderBlock) -> Void {
     DispatchQueue.main.async {
-      self.run(withApplicationID: applicantID)
+      self.run(withApplicationID: applicantID, resolver: resolve, rejecter: reject)
     }
   }
   
-  private func run(withApplicationID id: String) {
+  private func run(withApplicationID id: String,
+                   resolver resolve: @escaping RCTResponseSenderBlock,
+                   rejecter reject: @escaping RCTResponseSenderBlock) {
     let token = "ONFIDO_TOKEN"
 
     let onfidoConfig = try! OnfidoConfig.builder()
@@ -28,14 +32,16 @@ class OnfidoSDK: NSObject {
       .build()
     
     let onfidoFlow = OnfidoFlow(withConfiguration: onfidoConfig)
-      .with(responseHandler: { response in
+      .with(responseHandler: { [weak self] response in
         switch response {
         case let .error(error):
-          self.showAlert(message: error.localizedDescription)
+          self?.dismiss()
+          reject([error.localizedDescription])
         case .success(_):
-          self.showAlert(message: "Successfully KYC request submitted.")
+          self?.dismiss()
+          resolve([id])
         case .cancel:
-          self.dismiss()
+          self?.dismiss()
         }
       })
     

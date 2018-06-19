@@ -37,7 +37,11 @@ export default class App extends Component<{}> {
         (errorCause) => { this.setTextContent("Flow not finished", "To try again, press \"Launch\"") }
       );
     } else {
-      NativeModules.OnfidoSDK.startSDK('applicationID');
+      NativeModules.OnfidoSDK.startSDK(
+        'APPLICATION_ID',
+        (applicationId) => { this.setTextContent("Verification complete", "To perform another verification, press \"Launch\"") },
+        (errorCause) => { this.setTextContent("Flow not finished", "To try again, press \"Launch\"") }
+      );
     }
   }
 
