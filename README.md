@@ -2,14 +2,19 @@
 
 React Native Sample app using the onfido mobile SDKS.
 
-# How to run it
+## Disclaimer
+
+This code is meant to be an example only.
+Don't use it straight away in production without reviewing it and without careful consideration.
+
+## How to run it
 1. `npm install`
 
-## Android
+### Android
 
 2. `react-native run-android`
 
-## iOS
+### iOS
 
 2. `cd ios && pod install && cd ..`
 3. `react-native run-ios`
