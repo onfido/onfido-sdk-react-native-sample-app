@@ -11,7 +11,8 @@
 
 @interface RCT_EXTERN_MODULE(OnfidoSDK, NSObject)
 
-RCT_EXTERN_METHOD(startSDK:(NSString *)applicationID
+RCT_EXTERN_METHOD(startSDK: (NSString *)token
+                  applicantId: (NSString *)applicationID
                   resolver:(RCTResponseSenderBlock *)resolve
                   rejecter:(RCTResponseSenderBlock *)reject)
 

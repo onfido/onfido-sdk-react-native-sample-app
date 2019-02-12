@@ -1,26 +1,20 @@
 PODS:
-  - Onfido (7.1.0):
-    - SwiftyJSON (~> 3.1)
-    - Swinject (< 2.3)
-    - ZSWTaggedString (= 4.0)
-    - ZSWTappableLabel (= 2.0)
-  - SwiftyJSON (3.1.4)
-  - Swinject (2.2.0)
-  - ZSWTaggedString (4.0):
-    - ZSWTaggedString/Core (= 4.0)
-  - ZSWTaggedString/Core (4.0)
-  - ZSWTappableLabel (2.0)
+  - Onfido (10.4.0)
+  - Onfido-Release (10.4.0)
 
 DEPENDENCIES:
-  - Onfido (= 7.1.0)
+  - Onfido (= 10.4.0)
+  - Onfido-Release (= 10.4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Onfido
+    - Onfido-Release
 
 SPEC CHECKSUMS:
-  Onfido: 01068a4e0163eb247e48a143f98d0b29dfcd7d01
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  Swinject: 4ca48bca7de5f398229a26abe1ac902b9f3ee541
-  ZSWTaggedString: 3b06dc0fc32138bd15688a84167b0867c7353f3c
-  ZSWTappableLabel: cff84c0a55e30f2141f7dac24e5903302a7e35ec
+  Onfido: 941911150670d74ece933add0acbc074a64a67fd
+  Onfido-Release: c7d4a96c72d368f53ef61c62ae92e6118da54f25
 
-PODFILE CHECKSUM: f1f2f6d18d9ea5ed921a91c5570b637ed233a9de
+PODFILE CHECKSUM: 7cffb49712639b8c34706b287231f39ec76a51fe
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
