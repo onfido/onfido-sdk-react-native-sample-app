@@ -46,7 +46,7 @@ public class OnfidoSDK extends ReactContextBaseJavaModule {
 
                 @Override
                 public void onError(OnfidoException e, Applicant applicant) {
-                    mErrorCallback.invoke("Onfido SDK errored");
+                    mErrorCallback.invoke(e.getMessage());
                 }
             });
         }
@@ -65,9 +65,7 @@ public class OnfidoSDK extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void startSDK(String token, String applicantId, Callback successCallback, Callback errorCallback) {
-
-        System.out.printf(String.format("token=%s, applicantId=%s", token, applicantId));
-
+        
         Activity currentActivity = getCurrentActivity();
         mSuccessCallback = successCallback;
         mErrorCallback = errorCallback;
