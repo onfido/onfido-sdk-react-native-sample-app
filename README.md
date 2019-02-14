@@ -7,6 +7,12 @@ React Native Sample app using the onfido mobile SDKS.
 This code is meant to be an example only.
 Don't use it straight away in production without reviewing it and without careful consideration.
 
+## Requirements
+
+### iOS
+
+- Xcode 10.1
+
 ## How to run it
 1. `npm install`
 

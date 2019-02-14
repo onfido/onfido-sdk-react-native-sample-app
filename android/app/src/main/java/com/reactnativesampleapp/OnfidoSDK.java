@@ -14,6 +14,7 @@ import com.onfido.android.sdk.capture.Onfido;
 import com.onfido.android.sdk.capture.ExitCode;
 import com.onfido.android.sdk.capture.OnfidoConfig;
 import com.onfido.android.sdk.capture.OnfidoFactory;
+import com.onfido.android.sdk.capture.errors.OnfidoException;
 import com.onfido.api.client.data.Applicant;
 import com.onfido.android.sdk.capture.upload.Captures;
 import android.widget.Toast;
@@ -42,6 +43,11 @@ public class OnfidoSDK extends ReactContextBaseJavaModule {
                 public void userExited(ExitCode exitCode, Applicant applicant) {
                     mErrorCallback.invoke(exitCode.toString());
                 }
+
+                @Override
+                public void onError(OnfidoException e, Applicant applicant) {
+                    mErrorCallback.invoke(e.getMessage());
+                }
             });
         }
     };
@@ -58,7 +64,8 @@ public class OnfidoSDK extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startSDK(Callback successCallback, Callback errorCallback) {
+    public void startSDK(String token, String applicantId, Callback successCallback, Callback errorCallback) {
+        
         Activity currentActivity = getCurrentActivity();
         mSuccessCallback = successCallback;
         mErrorCallback = errorCallback;
@@ -69,14 +76,9 @@ public class OnfidoSDK extends ReactContextBaseJavaModule {
         }
 
         try {
-            Applicant applicant = Applicant.builder()
-                    .withFirstName("React User")
-                    .withLastName("Test")
-                    .withDateOfBirth(new GregorianCalendar(1974, 04, 25).getGregorianChange())
-                    .build();
             OnfidoConfig onfidoConfig = OnfidoConfig.builder()
-                    .withApplicant(applicant)
-                    .withToken("YOUR_TOKEN")
+                    .withApplicant(applicantId)
+                    .withToken(token)
                     .build();
             client.startActivityForResult(currentActivity, 1, onfidoConfig);
         }

@@ -11,18 +11,19 @@ import Onfido
 
 @objc(OnfidoSDK)
 class OnfidoSDK: NSObject {
-  @objc func startSDK(_ applicantID: String,
+  @objc func startSDK(_ token: String,
+                      applicantId: String,
                       resolver resolve: @escaping RCTResponseSenderBlock,
                       rejecter reject: @escaping RCTResponseSenderBlock) -> Void {
     DispatchQueue.main.async {
-      self.run(withApplicationID: applicantID, resolver: resolve, rejecter: reject)
+      self.run(withToken: token, andApplicantId: applicantId, resolver: resolve, rejecter: reject)
     }
   }
   
-  private func run(withApplicationID id: String,
+  private func run(withToken token: String,
+                   andApplicantId id: String,
                    resolver resolve: @escaping RCTResponseSenderBlock,
                    rejecter reject: @escaping RCTResponseSenderBlock) {
-    let token = "ONFIDO_TOKEN"
 
     let onfidoConfig = try! OnfidoConfig.builder()
       .withToken(token)
