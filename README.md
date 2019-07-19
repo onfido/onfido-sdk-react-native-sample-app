@@ -11,7 +11,7 @@ Don't use it straight away in production without reviewing it and without carefu
 
 ### iOS
 
-- Xcode 10.1
+- Xcode 10.2
 
 ## How to run it
 1. `npm install`

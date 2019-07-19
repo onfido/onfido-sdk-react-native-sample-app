@@ -29,7 +29,7 @@ class OnfidoSDK: NSObject {
       .withToken(token)
       .withApplicantId(id)
       .withDocumentStep()
-      .withFaceStep(ofVariant: .photo)
+      .withFaceStep(ofVariant: .photo(withConfiguration: nil))
       .build()
     
     let onfidoFlow = OnfidoFlow(withConfiguration: onfidoConfig)
