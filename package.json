@@ -4,7 +4,8 @@
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
+		"test": "jest",
+		"ios": "cd ios && pod install && cd .. && ./node_modules/.bin/react-native run-ios"
 	},
 	"dependencies": {
 		"react-native-config": "^0.11.5",

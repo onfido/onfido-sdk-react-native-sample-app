@@ -14,13 +14,14 @@ Don't use it straight away in production without reviewing it and without carefu
 - Xcode 10.2
 
 ## How to run it
+
 1. `npm install`
+2. Replace `YOUR_TOKEN` placeholder with your token in App.js file
 
 ### Android
 
-2. `react-native run-android`
+3. `react-native run-android`
 
 ### iOS
 
-2. `cd ios && pod install && cd ..`
-3. `react-native run-ios`
+4. `npm run ios`
