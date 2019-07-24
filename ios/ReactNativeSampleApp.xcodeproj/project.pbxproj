@@ -1163,9 +1163,8 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ReactNativeSampleApp/Pods-ReactNativeSampleApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ReactNativeSampleApp/Pods-ReactNativeSampleApp-frameworks.sh",
 				"${PODS_ROOT}/Onfido/Onfido.framework",
-				"${PODS_ROOT}/Onfido-Release/Onfido.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -1175,7 +1174,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactNativeSampleApp/Pods-ReactNativeSampleApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReactNativeSampleApp/Pods-ReactNativeSampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9EA7B1650378D978D45AEF2A /* [CP] Check Pods Manifest.lock */ = {

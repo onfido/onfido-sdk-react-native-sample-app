@@ -1,20 +1,16 @@
 PODS:
-  - Onfido (10.4.0)
-  - Onfido-Release (10.4.0)
+  - Onfido (13.0.0)
 
 DEPENDENCIES:
-  - Onfido (= 10.4.0)
-  - Onfido-Release (= 10.4.0)
+  - Onfido (= 13.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Onfido
-    - Onfido-Release
 
 SPEC CHECKSUMS:
-  Onfido: 941911150670d74ece933add0acbc074a64a67fd
-  Onfido-Release: c7d4a96c72d368f53ef61c62ae92e6118da54f25
+  Onfido: 1ae4d2260ac81331be91fb0bba32af3b080cd378
 
-PODFILE CHECKSUM: 7cffb49712639b8c34706b287231f39ec76a51fe
+PODFILE CHECKSUM: d83db93d4ebfa59f57cf16627dce8948e222aafa
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
