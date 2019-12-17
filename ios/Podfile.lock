@@ -1,16 +1,16 @@
 PODS:
-  - Onfido (13.0.0)
+  - Onfido (16.1.0)
 
 DEPENDENCIES:
-  - Onfido (= 13.0.0)
+  - Onfido (= 16.1.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Onfido
 
 SPEC CHECKSUMS:
-  Onfido: 1ae4d2260ac81331be91fb0bba32af3b080cd378
+  Onfido: 9ad5aa9c4c858c9a496d8d956cd8a951e1ce6c17
 
-PODFILE CHECKSUM: d83db93d4ebfa59f57cf16627dce8948e222aafa
+PODFILE CHECKSUM: ea672f2cb44104e8e0ce7757bf80f0ee63e91354
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4

@@ -48,6 +48,7 @@ class OnfidoSDK: NSObject {
     
     do {
       let onfidoRun = try onfidoFlow.run()
+      onfidoRun.modalPresentationStyle = .fullScreen
       UIApplication.shared.windows.first?.rootViewController?.present(onfidoRun, animated: true)
     } catch {
       // iOS simulator does not work because of camera
