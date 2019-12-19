@@ -11,7 +11,7 @@ Don't use it straight away in production without reviewing it and without carefu
 
 ### iOS
 
-- Xcode 10.2
+- Xcode 11.3
 
 ## How to run it
 
