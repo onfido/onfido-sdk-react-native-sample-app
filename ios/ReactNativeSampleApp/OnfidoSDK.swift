@@ -42,6 +42,7 @@ class OnfidoSDK: NSObject {
           self?.dismiss()
           resolve([id])
         case .cancel:
+          reject(["USER_LEFT_ACTIVITY"])
           self?.dismiss()
         }
       })
