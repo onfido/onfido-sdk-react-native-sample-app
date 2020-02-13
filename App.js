@@ -37,7 +37,13 @@ export default class App extends Component<{}> {
             this.token,
             applicantId,
             () => { this.setTextContent("Verification complete", "To perform another verification, press \"Launch\"") },
-            (errorCause) => { this.setTextContent("Flow not finished", "To try again, press \"Launch\"") }
+            (errorCause) => {
+              if (errorCause == "USER_LEFT_ACTIVITY") {
+                this.setTextContent("Flow cancelled", "To try again, press \"Launch\"")
+              } else {
+                this.setTextContent("Flow not finished", "To try again, press \"Launch\"")
+              }
+            }
           );
       })
   }
