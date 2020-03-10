@@ -1,7 +1,8 @@
 package com.reactnativesampleapp;
 
 import android.app.Application;
-import android.support.multidex.MultiDexApplication;
+
+import androidx.multidex.MultiDexApplication;
 
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
