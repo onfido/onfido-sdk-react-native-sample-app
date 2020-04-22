@@ -1,3 +1,5 @@
+> :warning: **This project is no longer supported**: Please use the [Onfido SDK React Native Wrapper npm package](https://www.npmjs.com/package/@onfido/react-native-sdk) instead.
+
 # onfido-sdk-react-native-sample-app
 
 React Native Sample app using the onfido mobile SDKS.
