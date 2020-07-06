@@ -1,4 +1,4 @@
-# ⛔️This project is no longer supported and will be permanently deleted in 1 January 2021.
+# ⛔️This project is no longer supported and will be permanently deleted on the 1st of January 2021.
 
 Please use the [Onfido SDK React Native Wrapper npm package](https://www.npmjs.com/package/@onfido/react-native-sdk) instead.
 
