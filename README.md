@@ -1,6 +1,6 @@
-# ⛔️DEPRECATED
+# ⛔️This project is no longer supported and will be permanently deleted on the 1st of January 2021.
 
-**This project is no longer supported**: Please use the [Onfido SDK React Native Wrapper npm package](https://www.npmjs.com/package/@onfido/react-native-sdk) instead.
+Please use the [Onfido SDK React Native Wrapper npm package](https://www.npmjs.com/package/@onfido/react-native-sdk) instead.
 
 # onfido-sdk-react-native-sample-app
 
